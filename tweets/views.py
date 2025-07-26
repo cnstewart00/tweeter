@@ -1,14 +1,14 @@
 # tweets/views.py
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView
-from django.urls import reverse
 from django.shortcuts import render, redirect
-from .models import Tweet
-from .forms import TweetForm
+from .models import Tweet  # only if you're using a Tweet model
+from .forms import TweetForm  # only if you have a form defined
 
+# Show a list of tweets
 def tweet_list(request):
-    return render(request, 'home.html', {'object_list': Tweet.objects.all()})
+    tweets = Tweet.objects.all()  # assumes you have a Tweet model
+    return render(request, 'tweets/tweet_list.html', {'tweets': tweets})
 
+# Handle tweet creation
 def tweet_new(request):
     if request.method == 'POST':
         form = TweetForm(request.POST)
@@ -16,6 +16,5 @@ def tweet_new(request):
             form.save()
             return redirect('home')
     else:
-        form = TweetForm
-
-    return render(request, 'tweet_new.html', {'form': form })
+        form = TweetForm()
+    return render(request, 'tweets/tweet_form.html', {'form': form})
