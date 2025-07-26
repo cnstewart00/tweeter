@@ -1,8 +1,12 @@
-# tweeter_app/urls.py
-from django.contrib import admin
-from django.urls import path, include # new
+# tweets/urls.py
+from django.urls import path
+# from .views import TweetListView, TweetCreateView
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('tweets.urls')), # new
+    path('tweets/new/', views.tweet_new, name='tweet_new'),
+    path('', views.tweet_list, name='home'),
+
+    # path('tweets/new/', TweetCreateView.as_view(), name='tweet_new'),
+    # path('', TweetListView.as_view(), name='home'),
 ]
