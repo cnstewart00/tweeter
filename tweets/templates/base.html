@@ -1,7 +1,72 @@
 <!-- tweets/templates/base.html -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>Tweeter</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1DA1F2;
+        padding: 15px 30px;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 a {
+        color: white;
+        text-decoration: none;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .nav-right a {
+        margin-left: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.2s;
+      }
+
+      .nav-right a:hover {
+        opacity: 0.85;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        padding: 20px;
+      }
+
+      .tweet-entry {
+        border-bottom: 1px solid #e6ecf0;
+        padding: 15px 0;
+      }
+
+      .tweet-entry h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #14171a;
+      }
+
+      .tweet-entry p {
+        color: #657786;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -14,8 +79,8 @@
       </div>
     </header>
 
-    <div>
-    {% block content %} {% endblock content %}
+    <div class="container">
+      {% block content %} {% endblock content %}
     </div>
   </body>
 </html>
